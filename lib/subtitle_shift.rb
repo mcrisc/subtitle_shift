@@ -9,8 +9,8 @@ end
 
 def to_timeformat(millis)
 	milliseconds, sum = millis % 1000, millis / 1000
-	seconds, sum = sum % 60, sum / 60
-	minutes, hours = sum % 3600, sum / 3600
+	hours, sum = sum / 3600, sum % 3600
+	minutes, seconds = sum / 60, sum % 60
 	
 	format("%02d:%02d:%02d,%03d", hours, minutes, seconds, milliseconds)
 end
@@ -35,4 +35,3 @@ def shift(file_in, file_out, offset)
 	output.close
 end
 
-shift('sample.srt', 'shifted.srt', -10)
